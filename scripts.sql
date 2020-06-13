@@ -1,10 +1,4 @@
 
-
-DROP DATABASE kinopoisk;
-
-
-
-
 -- Отредактируем чтобы начало съемок было раньше конца
 SELECT * FROM kinopoisk.serial;
 UPDATE kinopoisk.serial SET finish_year = start_year, start_year = finish_year WHERE start_year > finish_year;
@@ -58,6 +52,8 @@ ORDER BY rating DESC;
 SELECT * FROM movie_summary;
 
 -- Триггер 
+-- необходим для проверки того, что пользователь может оставить
+-- лишь один отзыв к одному фильму
 
 DROP TRIGGER IF EXISTS duplicate;
 delimiter //
